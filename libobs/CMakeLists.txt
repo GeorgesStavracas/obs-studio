@@ -181,13 +181,18 @@ elseif(APPLE)
 elseif(UNIX)
 	set(libobs_PLATFORM_SOURCES
 		obs-nix.c
+		obs-nix-platform.c
 		obs-nix-x11.c
 		util/threading-posix.c
 		util/pipe-posix.c
 		util/platform-nix.c)
 
+	set(libobs_PLATFORM_HEADERS
+		obs-nix-platform.h)
+
 	if(NEEDS_SIMDE)
 		set(libobs_PLATFORM_HEADERS
+			${libobs_PLATFORM_HEADERS}
 			util/simde/check.h
 			util/simde/hedley.h
 			util/simde/mmx.h
@@ -198,6 +203,7 @@ elseif(UNIX)
 			util/threading-posix.h)
 	else()
 		set(libobs_PLATFORM_HEADERS
+			${libobs_PLATFORM_HEADERS}
 			util/threading-posix.h)
 	endif()
 
