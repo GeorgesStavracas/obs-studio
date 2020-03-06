@@ -190,6 +190,21 @@ elseif(UNIX)
 	set(libobs_PLATFORM_HEADERS
 		obs-nix-platform.h)
 
+	if(ENABLE_WAYLAND)
+		find_package(Wayland COMPONENTS Client REQUIRED)
+
+		set(libobs_PLATFORM_SOURCES ${libobs_PLATFORM_SOURCES}
+			obs-nix-wayland.c)
+
+		include_directories(
+			${WAYLAND_CLIENT_INCLUDE_DIR})
+		add_definitions(
+			${WAYLAND_DEFINITIONS})
+		set(libobs_PLATFORM_DEPS
+			${libobs_PLATFORM_DEPS}
+			${WAYLAND_CLIENT_LIBRARIES})
+	endif()
+
 	if(NEEDS_SIMDE)
 		set(libobs_PLATFORM_HEADERS
 			${libobs_PLATFORM_HEADERS}
