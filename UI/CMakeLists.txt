@@ -408,6 +408,11 @@ if (APPLE)
 endif()
 set_target_properties(obs PROPERTIES FOLDER "frontend")
 
+if (ENABLE_WAYLAND)
+	find_package(Qt5Gui REQUIRED)
+	include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+endif()
+
 define_graphic_modules(obs)
 
 install_obs_core(obs)
