@@ -202,8 +202,6 @@ OBSBasic::OBSBasic(QWidget *parent)
 	qRegisterMetaTypeStreamOperators<SignalContainer<OBSScene>>(
 		"SignalContainer<OBSScene>");
 
-	setAttribute(Qt::WA_NativeWindow);
-
 #if TWITCH_ENABLED
 	RegisterTwitchAuth();
 #endif
