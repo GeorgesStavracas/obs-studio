@@ -1924,6 +1924,7 @@ static int run_program(fstream &logFile, int argc, char *argv[])
 
 #if !defined(_WIN32) && !defined(__APPLE__) && BROWSER_AVAILABLE
 	setenv("QT_NO_GLIB", "1", true);
+	setenv("QT_QPA_PLATFORMTHEME ", "xdgdesktopportal", true);
 #endif
 
 	QCoreApplication::addLibraryPath(".");
