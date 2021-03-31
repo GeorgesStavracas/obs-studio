@@ -1412,6 +1412,8 @@ bool OBSApp::OBSInit()
 		native->nativeResourceForIntegration("display"));
 #endif
 
+	blog(LOG_INFO, "Test");
+
 	if (!StartupOBS(locale.c_str(), GetProfilerNameStore()))
 		return false;
 
