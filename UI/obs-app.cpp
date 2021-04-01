@@ -1413,6 +1413,7 @@ bool OBSApp::OBSInit()
 #endif
 
 	blog(LOG_INFO, "Test");
+	blog(LOG_INFO, "Another Test");
 
 	if (!StartupOBS(locale.c_str(), GetProfilerNameStore()))
 		return false;
