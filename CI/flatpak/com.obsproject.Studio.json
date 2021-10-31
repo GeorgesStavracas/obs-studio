@@ -248,6 +248,16 @@
       "name": "obs",
       "buildsystem": "cmake-ninja",
       "builddir": true,
+      "secret-env": [
+        "RESTREAM_CLIENTID",
+        "RESTREAM_HASH",
+        "TWITCH_CLIENTID",
+        "TWITCH_HASH",
+        "YOUTUBE_CLIENTID",
+        "YOUTUBE_CLIENTID_HASH",
+        "YOUTUBE_SECRET",
+        "YOUTUBE_SECRET_HASH"
+      ],
       "config-opts": [
         "-DCMAKE_BUILD_TYPE=Release",
         "-DENABLE_WAYLAND=ON",
@@ -258,6 +268,16 @@
         "-DDISABLE_ALSA=ON",
         "-DENABLE_PULSEAUDIO=ON",
         "-DWITH_RTMPS=ON"
+      ],
+      "secret-opts": [
+        "-DRESTREAM_CLIENTID=$RESTREAM_CLIENTID",
+        "-DRESTREAM_HASH=$RESTREAM_HASH",
+        "-DTWITCH_CLIENTID=$TWITCH_CLIENTID",
+        "-DTWITCH_HASH=$TWITCH_HASH",
+        "-DYOUTUBE_CLIENTID=$YOUTUBE_CLIENTID",
+        "-DYOUTUBE_CLIENTID_HASH=$YOUTUBE_CLIENTID_HASH",
+        "-DYOUTUBE_SECRET=$YOUTUBE_SECRET",
+        "-DYOUTUBE_SECRET_HASH=$YOUTUBE_SECRET_HASH"
       ],
       "sources": [
         {
