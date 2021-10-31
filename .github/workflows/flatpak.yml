@@ -3,10 +3,10 @@ name: Flatpak (Experimental)
 on:
   push:
     paths-ignore: ['**.md']
-    branches: [master]
+    #branches: [master]
   pull_request:
     paths-ignore: ['**.md']
-    branches: [master]
+    #branches: [master]
 
 jobs:
   flatpak_builder:
@@ -30,13 +30,15 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2.3.3
-      if: success() && (github.event_name != 'pull_request' || env.SEEKING_TESTERS == '1')
+      #if: success() && (github.event_name != 'pull_request' || env.SEEKING_TESTERS == '1')
+      if: success()
       with:
         submodules: 'recursive'
 
     - name: Build Flatpak Manifest
       uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v3
-      if: success() && (github.event_name != 'pull_request' || env.SEEKING_TESTERS == '1')
+      #if: success() && (github.event_name != 'pull_request' || env.SEEKING_TESTERS == '1')
+      if: success()
       with:
         bundle: obs-studio-${{ github.sha }}.flatpak
         manifest-path: CI/flatpak/com.obsproject.Studio.json
