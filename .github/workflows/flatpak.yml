@@ -104,7 +104,7 @@ jobs:
 
       - name: "Publish to Flathub"
         uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
-        if: success() && !contains(github.ref, '-rc')
+        if: !contains(github.ref, '-rc')
         with:
           flat-manager-url: https://hub.flathub.org/
           repository: stable
