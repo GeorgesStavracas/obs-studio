@@ -99,16 +99,27 @@ jobs:
           ostree commit --repo=repo --canonical-permissions --branch=screenshots/x86_64 flatpak_app/screenshots
 
       - name: "Publish to Flathub Beta"
-        uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
-        with:
-          flat-manager-url: https://hub.flathub.org/
-          repository: beta
-          token: ${{ secrets.FLATHUB_BETA_TOKEN }}
+        shell: bash
+        run: |
+          echo "Publishing to Flathub Beta"
 
       - name: "Publish to Flathub"
-        uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
         if: "!contains(github.ref, '-rc')"
-        with:
-          flat-manager-url: https://hub.flathub.org/
-          repository: stable
-          token: ${{ secrets.FLATHUB_TOKEN }}
+        shell: bash
+        run: |
+          echo "Publishing to Flathub"
+
+#      - name: "Publish to Flathub Beta"
+#        uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
+#        with:
+#          flat-manager-url: https://hub.flathub.org/
+#          repository: beta
+#          token: ${{ secrets.FLATHUB_BETA_TOKEN }}
+#
+#      - name: "Publish to Flathub"
+#        uses: bilelmoussaoui/flatpak-github-actions/flat-manager@v3
+#        if: "!contains(github.ref, '-rc')"
+#        with:
+#          flat-manager-url: https://hub.flathub.org/
+#          repository: stable
+#          token: ${{ secrets.FLATHUB_TOKEN }}
