@@ -65,6 +65,7 @@ jobs:
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
       FLATHUB_REPOSITORY: beta
+      FLATHUB_BRANCH: beta
       FLATHUB_TOKEN: ${{ secrets.FLATHUB_BETA_TOKEN }}
     container:
       image: bilelmoussaoui/flatpak-github-actions:kde-5.15-21.08
@@ -82,6 +83,7 @@ jobs:
           manifest-path: CI/flatpak/com.obsproject.Studio.json
           cache-key: flatpak-builder-${{ github.sha }}
           mirror-screenshots-url: https://dl.flathub.org/repo/screenshots
+          branch: ${{ env.FLATHUB_BRANCH }}
 
       - name: Validate AppStream
         shell: bash
@@ -116,6 +118,7 @@ jobs:
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
       FLATHUB_REPOSITORY: stable
+      FLATHUB_BRANCH: stable
       FLATHUB_TOKEN: ${{ secrets.FLATHUB_TOKEN }}
     container:
       image: bilelmoussaoui/flatpak-github-actions:kde-5.15-21.08
@@ -133,6 +136,7 @@ jobs:
           manifest-path: CI/flatpak/com.obsproject.Studio.json
           cache-key: flatpak-builder-${{ github.sha }}
           mirror-screenshots-url: https://dl.flathub.org/repo/screenshots
+          branch: ${{ env.FLATHUB_BRANCH }}
 
       - name: Validate AppStream
         shell: bash
