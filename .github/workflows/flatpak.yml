@@ -4,9 +4,6 @@ name: Flatpak
 
 on:
   workflow_dispatch:
-  release:
-    types: [published]
-    branches: [master, 'release/**']
 
 env:
   TWITCH_CLIENTID: ${{ secrets.TWITCH_CLIENT_ID }}
