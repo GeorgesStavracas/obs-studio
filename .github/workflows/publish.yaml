@@ -114,10 +114,10 @@ jobs:
           branch: ${{ matrix.branch }}
 
       - name: Validate AppStream
-        working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-        run: |
-          : Validate AppStream
-          appstream-util validate appdata/com.obsproject.Studio.appdata.xml
+        uses: ./.github/actions/flatpak-builder-lint
+        with:
+          artifact: appstream
+          path: ${{ env.FLATPAK_BUILD_PATH }}/metainfo/com.obsproject.Studio.metainfo.xml
 
       - name: Verify Icon and Metadata in app-info
         working-directory: ${{ env.FLATPAK_BUILD_PATH }}
