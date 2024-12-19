@@ -15,7 +15,7 @@ concurrency:
 jobs:
   check-tag:
     name: Check Release Tag
-    if: github.repository_owner == 'obsproject'
+    if: github.repository_owner == 'GeorgesStavracas'
     runs-on: ubuntu-24.04
     outputs:
       validTag: ${{ steps.check.outputs.validTag }}
@@ -46,7 +46,7 @@ jobs:
   flatpak-publish:
     name: Flathub 📦
     needs: check-tag
-    if: github.repository_owner == 'obsproject' && fromJSON(needs.check-tag.outputs.validTag)
+    if: github.repository_owner == 'GeorgesStavracas' && fromJSON(needs.check-tag.outputs.validTag)
     runs-on: ubuntu-24.04
     defaults:
       run:
@@ -162,7 +162,7 @@ jobs:
   steam-upload:
     name: Upload Steam Builds 🚂
     needs: check-tag
-    if: github.repository_owner == 'obsproject' && fromJSON(needs.check-tag.outputs.validTag)
+    if: github.repository_owner == 'GeorgesStavracas' && fromJSON(needs.check-tag.outputs.validTag)
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
@@ -178,7 +178,7 @@ jobs:
   windows-patches:
     name: Create Windows Patches 🩹
     needs: check-tag
-    if: github.repository_owner == 'obsproject' && fromJSON(needs.check-tag.outputs.validTag)
+    if: github.repository_owner == 'GeorgesStavracas' && fromJSON(needs.check-tag.outputs.validTag)
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
